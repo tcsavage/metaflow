@@ -90,6 +90,8 @@ class KubernetesDecorator(StepDecorator):
         volumes to the path to which the volume is to be mounted, e.g., `{'pvc-name': '/path/to/mount/on'}`.
     shared_memory: int, optional
         Shared memory size (in MiB) required for this step
+    annotations: Dict[str, str], optional
+        A map (dictionary) of annotations to be added to the pod for this step.
     """
 
     name = "kubernetes"
@@ -113,6 +115,7 @@ class KubernetesDecorator(StepDecorator):
         "tmpfs_path": "/metaflow_temp",
         "persistent_volume_claims": None,  # e.g., {"pvc-name": "/mnt/vol", "another-pvc": "/mnt/vol2"}
         "shared_memory": None,
+        "annotations": None,
     }
     package_url = None
     package_sha = None
